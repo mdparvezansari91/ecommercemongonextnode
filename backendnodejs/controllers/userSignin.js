@@ -41,7 +41,7 @@ const signIn =async (req, res) => {
         res.cookie('token', token, { 
             httpOnly: true, 
             secure: process.env.NODE_ENV === "production",
-            SameSite:"None",
+            sameSite:"None",
         }); // Use secure cookies in production
         res.setHeader('Set-Cookie', 'myCookie=cookie_value; Max-Age=3600');
         res.cookie('token2', "thisistemporarytoken", {path:"/"})
