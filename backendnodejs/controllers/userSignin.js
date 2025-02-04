@@ -37,18 +37,7 @@ const signIn = async (req, res) => {
         }
 
         const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, { expiresIn: 60 * 60 * 8 })
-        // res.setHeader('Set-Cookie', `tokenfromsetcookie=${token}; HttpOnly; Secure; SameSite=None; Max-Age=${60 * 60 * 8}`);
-        // res.cookie('token', token, {
-        //     httpOnly: true,
-        //     expires:token.expiresIn,
-        //     secure: true, // Use secure cookies in production process.env.NODE_ENV === 'production'
-        //     sameSite: "none",
-        // }); 
-
         
-
-
-
         res.cookie('token', token, {
             httpOnly: true,
             expires:token.expiresIn,
