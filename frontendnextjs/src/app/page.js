@@ -30,6 +30,7 @@ export default function Home() {
         if (!response ===200) {
           throw new Error('Error in getting response');
           }
+          console.log({"fetchedResponse from Home/page.tsx":response})
           setData(response.data)
       } catch (error) {
         setError(error.message);
