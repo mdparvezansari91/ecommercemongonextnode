@@ -5,8 +5,9 @@ const PORT = process.env.PORT || 8000
 const cors = require("cors");
 const router = require("./routes/route");
 const ConnectDB = require("./config/db");
+const cookieParser = require("cookie-parser");
 app.use(express.json())
-
+app.use(cookieParser());
 
 app.use(cors({
     origin: process.env.frontendURL,

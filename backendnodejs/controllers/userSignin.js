@@ -43,6 +43,7 @@ const signIn =async (req, res) => {
             secure: false,
             SameSite:"None",
         }); // Use secure cookies in production
+        res.setHeader('Set-Cookie', 'myCookie=cookie_value; Max-Age=3600');
         res.cookie('token2', "thisistemporarytoken")
         
 
