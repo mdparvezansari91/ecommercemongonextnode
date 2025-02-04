@@ -31,6 +31,7 @@ export const signin = createAsyncThunk('user/signin', async (credential, { rejec
             
         });
         console.log({ "user/signin": response.data });
+        
         return response.data;
     } catch (error) {
         console.error("Error during sign-in:", error);
