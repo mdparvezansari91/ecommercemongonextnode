@@ -4,6 +4,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8000
 const cors = require("cors");
 const router = require("./routes/route");
+const ConnectDB = require("./config/db");
 
 app.use(cors());
 
@@ -22,7 +23,12 @@ try {
 }
 })
 
-app.listen(PORT, ()=>{
-    console.log("server is running on port 8000")
+ConnectDB()
+.then(()=>{
+    app.listen(PORT, ()=>{
+        console.log("server is running on port 8000")
+    })
 })
+
+
 
