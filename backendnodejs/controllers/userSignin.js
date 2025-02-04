@@ -41,8 +41,8 @@ const signIn = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             expire:token.expiresIn,
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            SameSite: "None",
+            secure: true, // Use secure cookies in production process.env.NODE_ENV === 'production'
+            samesite: "None",
         }); 
 
         
