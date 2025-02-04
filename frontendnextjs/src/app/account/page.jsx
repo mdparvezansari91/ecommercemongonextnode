@@ -1,7 +1,5 @@
 'use client'
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { userCheck } from "@/store/user/userSlice"; // Make sure to import your userCheck action
+import { useSelector } from "react-redux";
 
 const Account = () => {
     const user = useSelector((state) => state.user.user);
