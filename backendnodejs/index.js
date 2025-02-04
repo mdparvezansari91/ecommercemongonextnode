@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 app.use(express.json())
 app.use(cookieParser());
 
+console.log({"cors":cors()})
 app.use(cors({
     origin: process.env.frontendURL, // Allow requests from this origin
     credentials: true, // Allow credentials (cookies) to be sent
@@ -16,9 +17,8 @@ app.use(cors({
         "Content-Type", // Common headers you might want to allow
         "Authorization", // If you're using authorization tokens
         "X-Requested-With", // For AJAX requests
-        "token",
-        "cookie"
     ],
+
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"] // Specify allowed methods
 }));
 

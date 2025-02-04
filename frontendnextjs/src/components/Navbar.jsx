@@ -13,9 +13,9 @@ const Navbar = () => {
     const router = useRouter();
     const user = useSelector(state => state.user)
     console.log({"user on navbar":user})
-    useEffect(() => {
-        dispatch(userCheck())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(userCheck())
+    // }, [dispatch])
 
     const handleLogout = async () => {
         await dispatch(signOut())
