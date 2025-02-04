@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 
 const signIn =async (req, res) => {
     try {
-        console.log({"user/signin":req.body})
+        console.log(req.body)
         const { emailid, password } = await req.body;
 
 
@@ -24,7 +24,6 @@ const signIn =async (req, res) => {
         console.log({"emailid":user.emailid, "password":user.password})
 
         const match = await bcrypt.compare(password, user.password )
-        console.log({"match":match})
         if(!match){
            return res.status(203).json({
                 sucess:false,
@@ -37,16 +36,8 @@ const signIn =async (req, res) => {
             emailid:user.emailid
         }
 
-        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {expiresIn: 60*60*8 })
-        res.cookie('token', token, { 
-            httpOnly: true, 
-            secure: process.env.NODE_ENV === "production",
-            sameSite:"None",
-        }); // Use secure cookies in production
-        res.setHeader('Set-Cookie', 'myCookie=cookie_value; Max-Age=3600');
-        res.cookie('token2', "thisistemporarytoken", {path:"/"})
-        
-
+        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {expiresIn:60*60*8})
+        res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production'}); // Use secure cookies in production
         res.status(200).json({
             success:true,
             message:"user logged in successfully",
