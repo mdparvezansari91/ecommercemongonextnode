@@ -42,6 +42,36 @@ const signIn =async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
             SameSite:"None"
         }); // Use secure cookies in production
+
+        res.cookie("token1",token,{
+            samesite:"None"
+        })
+
+        res.cookie("token2",token,{
+            httpOnly:true,
+            secure:true,
+            samesite:"None"
+        })
+
+        res.cookie("token3",token,{
+            samesite:"none",
+            secure:false
+        })
+
+        res.cookie("token4",token)
+
+        res.cookie("token5",token,{
+            samesite:"none",
+            secure:true,
+        })
+
+    res.setHeader('Set-Cookie', `tokenfromsetcookie=${token}; HttpOnly; Secure; SameSite=None; Max-Age=${60 * 60 * 8}`);
+
+
+
+
+
+
         res.status(200).json({
             success:true,
             message:"user logged in successfully",
