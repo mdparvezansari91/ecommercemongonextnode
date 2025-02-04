@@ -41,7 +41,6 @@ const signIn =async (req, res) => {
         res.cookie('token', token, { 
             httpOnly: true, 
             secure: true,
-            SameSite:"None",
         }); // Use secure cookies in production
         
         res.cookie('token2', "thisistemporarytoken")
