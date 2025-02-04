@@ -36,7 +36,7 @@ const Signin = () => {
                 if (action.type === 'user/signin/fulfilled') {
                     if (action.payload.success) {
                         toast.success(action.payload.message);
-                        dispatch(userCheck());
+                        // dispatch(userCheck());
                         router.push("/");
                     } else {
                         toast.error(action.payload.message);
