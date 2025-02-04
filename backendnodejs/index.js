@@ -15,7 +15,9 @@ app.use(cors({
     allowedHeaders: [
         "Content-Type", // Common headers you might want to allow
         "Authorization", // If you're using authorization tokens
-        "X-Requested-With" // For AJAX requests
+        "X-Requested-With", // For AJAX requests
+        "token",
+        "cookie"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"] // Specify allowed methods
 }));
