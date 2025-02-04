@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 
 const signIn =async (req, res) => {
     try {
-        console.log(req.body)
+        console.log({"user/signin":req.body})
         const { emailid, password } = await req.body;
 
 
@@ -24,6 +24,7 @@ const signIn =async (req, res) => {
         console.log({"emailid":user.emailid, "password":user.password})
 
         const match = await bcrypt.compare(password, user.password )
+        console.log({"match":match})
         if(!match){
            return res.status(203).json({
                 sucess:false,

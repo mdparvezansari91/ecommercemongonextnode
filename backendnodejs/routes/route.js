@@ -13,13 +13,26 @@ const router = express.Router();
 router.get("/userschema", userSchema)
 router.get("/productschema", productSchema)
 
-router.get("/test", (req,res)=>{
-    console.log(req)
-    res.status(200).json({
-        success:true,
-        message:"Response From Test URL"
+router.post("/test",(req,res)=>{
+    try {
+        res.status(200).json({
+            message: "response from test route Post is working",
+        })
+    } catch (error) {
+        
+    }
+})
 
-    })
+router.get("/test", (req,res)=>{
+    try {
+        res.status(200).json({
+            success:true,
+            message:"Response From Test URL Get Request"
+    
+        })
+    } catch (error) {
+        
+    }
 
 })
 

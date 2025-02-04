@@ -1,4 +1,4 @@
-const serverDomain = process.env.NEXT_PUBLIC_API_URL
+const serverDomain = `${process.env.NEXT_PUBLIC_API_URL}/api`
 // const serverDomain = "http://localhost:8000/api"
 
 
@@ -19,9 +19,13 @@ const summaryApi = {
         url:`${serverDomain}/signout`,
         method:"post"
     },
-    testApi:{
+    testApiget:{
         url:`${serverDomain}/test`,
         method:"get"
+    },
+    testAPIpost:{
+        url:`${serverDomain}/test`,
+        method:"post"
     }
 }
 

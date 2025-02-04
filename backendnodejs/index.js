@@ -5,8 +5,13 @@ const PORT = process.env.PORT || 8000
 const cors = require("cors");
 const router = require("./routes/route");
 const ConnectDB = require("./config/db");
+app.use(express.json())
 
-app.use(cors());
+
+app.use(cors({
+    origin: process.env.frontendUrl,
+    credentials:true,
+}));
 
 app.use("/api", router);
 
