@@ -10,9 +10,14 @@ app.use(express.json())
 app.use(cookieParser());
 
 app.use(cors({
-    origin: process.env.frontendURL,
-    credentials:true,
-    
+    origin: process.env.frontendURL, // Allow requests from this origin
+    credentials: true, // Allow credentials (cookies) to be sent
+    allowedHeaders: [
+        "Content-Type", // Common headers you might want to allow
+        "Authorization", // If you're using authorization tokens
+        "X-Requested-With" // For AJAX requests
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"] // Specify allowed methods
 }));
 
 app.use("/api", router);
