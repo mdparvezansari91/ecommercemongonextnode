@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -45,6 +46,9 @@ export default function Home() {
         
         {error && <p>Error: {error}</p>}
         {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+        <div>
+          <Link href={"/signin"}>Go to Signin</Link>
+        </div>
       </div>
     </>
   );
