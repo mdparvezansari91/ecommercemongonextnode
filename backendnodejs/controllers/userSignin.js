@@ -43,6 +43,7 @@ const signIn =async (req, res) => {
             httpOnly: true, 
             secure: true,
             SameSite:"None",
+            expiresIn:36000,
         }); // Use secure cookies in production
         
         res.cookie('token2', "thisistemporarytoken")
