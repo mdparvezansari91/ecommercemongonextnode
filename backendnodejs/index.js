@@ -3,15 +3,23 @@ const app = express()
 require("dotenv").config();
 const PORT = process.env.PORT || 8000
 const cors = require("cors");
+const router = require("./routes/route");
 
 app.use(cors());
 
+app.use("/api", router);
 
 app.get("/",(req,res)=>{
-
-    res.json({
-        "message": "Hello, World!"
+try {
+    return res.status(200).json({
+        "message": "Hello, Universe!"
     })
+    
+} catch (error) {
+    return res.status(500).json({
+        "message": "Error"
+    })
+}
 })
 
 app.listen(PORT, ()=>{
