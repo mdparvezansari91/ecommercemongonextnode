@@ -27,7 +27,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(process.env.NEXT_PUBLIC_API_URL)
-        if (!response ===200) {
+        if (!response === 200) {
           throw new Error('Error in getting response');
           }
           console.log({"fetchedResponse from Home/page.tsx":response})

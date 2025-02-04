@@ -10,9 +10,8 @@ const TestRoute = () => {
         const fetchData = async () => {
             try {
                 const response = await axios(summaryApi.testApiget.url,{
-                    method: "post",
-                    withCredentials:true
-                    
+                    method: "get",
+                           
                 
                 })
                 console.log(response);
