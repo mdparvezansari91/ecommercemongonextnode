@@ -12,9 +12,7 @@ app.use(cookieParser());
 app.use(cors({
     origin: process.env.frontendURL,
     credentials:true,
-    allowedHeaders:{
-        "Set-Cookie"
-    }
+    
 }));
 
 app.use("/api", router);
