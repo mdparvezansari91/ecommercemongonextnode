@@ -38,14 +38,12 @@ const signIn =async (req, res) => {
         }
 
         const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {expiresIn: 60*60*8 })
-        res.setHeader('Set-Cookie', 'myCookie=cookie_value; Max-Age=3600');
         res.cookie('token', token, { 
             httpOnly: true, 
             secure: true,
             SameSite:"None",
-            expiresIn:36000,
         }); // Use secure cookies in production
-        
+        res.setHeader('Set-Cookie', 'myCookie=cookie_value; Max-Age=3600');
         res.cookie('token2', "thisistemporarytoken")
         
 
