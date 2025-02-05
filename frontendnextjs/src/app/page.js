@@ -2,50 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { userCheck } from '@/store/user/userSlice';
 
 export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(process.env.NEXT_PUBLIC_API_URL);
-  //       if (!response.ok) {
-  //         throw new Error('Error in getting response');
-  //       }
-  //       const result = await response.json();
-  //       setData(result);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []); // Empty dependency array means this effect runs once on mount
+  const dispatch = useDispatch();
 
   useEffect(()=>{
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(process.env.NEXT_PUBLIC_API_URL)
-        if (!response === 200) {
-          throw new Error('Error in getting response');
-          }
-          console.log({"fetchedResponse from Home/page.tsx":response})
-          setData(response.data)
-      } catch (error) {
-        setError(error.message);
-                
-      }
-    }
-    fetchData();
-  },[])
+    dispatch(userCheck())
+  },[dispatch])
   return (
     <>
       <div>
-        
-        {error && <p>Error: {error}</p>}
-        {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
         <div>
           <Link href={"/signin"}>Go to Signin</Link>
         </div>

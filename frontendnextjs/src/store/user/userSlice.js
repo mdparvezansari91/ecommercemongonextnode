@@ -13,14 +13,20 @@ export const userCheck = createAsyncThunk('user/profile', async (_, { rejectWith
             method: summaryApi.userProfile.method,
             withCredentials: true
         });
-        console.log({ "usercheck/": response.data });
+        console.log({ "usercheck/": response.data }); // Log successful responses
         return response.data;
     } catch (error) {
+        // Check if the error is a 401 error
+        if (error.response && error.response.status === 401) {
+            // Handle 401 error without logging it
+            return rejectWithValue({ message: "Unauthorized access. Please log in." });
+        }
+
+        // Log other errors
         console.error("Error fetching user profile:", error);
-        return rejectWithValue(error.response?.data || { message: "from usercheck userslice:Something went wrong" });
+        return rejectWithValue(error.response?.data || { message: "from usercheck userslice: Something went wrong" });
     }
 });
-
 // Async thunk for user sign-in
 export const signin = createAsyncThunk('user/signin', async (credential, { rejectWithValue }) => {
     try {
@@ -31,7 +37,7 @@ export const signin = createAsyncThunk('user/signin', async (credential, { rejec
             
         });
         console.log({ "user/signin": response.data });
-        
+
         return response.data;
     } catch (error) {
         console.error("Error during sign-in:", error);
@@ -46,6 +52,7 @@ export const signOut = createAsyncThunk("user/signout", async (_, { rejectWithVa
             method: summaryApi.signOut.method,
             withCredentials: true
         });
+
         return response.data;
     } catch (error) {
         console.error("Error during sign-out:", error);
@@ -90,7 +97,6 @@ const userSlice = createSlice({
             .addCase(userCheck.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
-                console.error("User  check rejected:", action.payload);
             })
             .addCase(signOut.pending, (state) => {
                 state.loading = true;
