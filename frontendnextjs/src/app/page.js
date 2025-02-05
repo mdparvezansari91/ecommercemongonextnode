@@ -6,7 +6,6 @@ import { userCheck } from '@/store/user/userSlice';
 
 export default function Home() {
   const user = useSelector(state=>state.user.user)
-  console.log(user?.userId?.emailid);
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(userCheck())
