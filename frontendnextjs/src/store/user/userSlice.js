@@ -13,7 +13,7 @@ export const userCheck = createAsyncThunk('user/profile', async (_, { rejectWith
             method: summaryApi.userProfile.method,
             withCredentials: true
         });
-        console.log({ "usercheck/": response.data }); // Log successful responses
+        console.log({ "usercheck/response": response.data }); // Log successful responses
         return response.data;
     } catch (error) {
         // Check if the error is a 401 error
